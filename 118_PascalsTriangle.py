@@ -5,7 +5,7 @@ class Solution:
             res.append([])
             for j in range(0, i + 1):
                 if j in (0, i):
-                    res[i][j] = 1
+                    res[i].append(1)
                 else:
-                    res[i][j] = res[i - 1][j - 1] + res[i - 1][j]
-        return res[-1]
+                    res[i].append(res[i - 1][j - 1] + res[i - 1][j])
+        return res
