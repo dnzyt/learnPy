@@ -6,9 +6,9 @@ class ListNode:
 
 class Solution:
     def addTwoNumbers(self, l1, l2):
-        if l1 == None:
+        if l1 is None:
             return l2
-        if l2 == None:
+        if l2 is None:
             return l1
         dummy = ListNode(0)
         p = dummy
