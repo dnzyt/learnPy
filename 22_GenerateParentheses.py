@@ -1,17 +1,26 @@
 class Solution:
-    def generateParentheses(self, n):
+    def generateParenthesis(self, n):
         if n == 0:
             return []
         result = []
         self.helper(n, n, '', result)
         return result
 
-    def helper(self, l, r, item, result):
-        if l > r:
+    def helper(self, le, ri, item, result):
+        if le > ri:
             return
-        if l == 0 and r == 0:
+        if le == 0 and ri == 0:
             result.append(item)
-        if l > 0:
-            self.helper(l - 1, r, item + '(', result)
-        if r > 0:
-            self.helper(l, r - 1, item + ')', result)
+        if le > 0:
+            self.helper(le - 1, ri, item + '(', result)
+        if ri > 0:
+            self.helper(le, ri - 1, item + ')', result)
+
+    def generateParenthesis2(self, n):
+        if n == 1:
+            return ['()']
+        s = set()
+        for res in self.generateParenthesis2(n - 1):
+            for i in range(len(res) + 1):
+                s.add(res[:i] + '()' + res[i:])
+        return s
