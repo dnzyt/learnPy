@@ -12,10 +12,12 @@ class Solution(object):
                 return False
             if idx == len(word) - 1:
                 return True
-            curr = board[i][j]
-            board[i][j] = '0'
-            res = search(i - 1, j, idx + 1) or search(i + 1, j, idx + 1) or search(i, j - 1, idx + 1) or search(i, j + 1, idx + 1)
-            board[i][j] = curr
+            board[i][j] = '#'
+            res = search(i - 1, j, idx + 1) or \
+                search(i + 1, j, idx + 1) or \
+                search(i, j - 1, idx + 1) or \
+                search(i, j + 1, idx + 1)
+            board[i][j] = word[idx]
             return res
 
         row = len(board)

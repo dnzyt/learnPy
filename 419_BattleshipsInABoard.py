@@ -17,7 +17,6 @@ class Solution(object):
                         else:
                             break
 
-
         row = len(board)
         col = len(board[0])
 
@@ -27,4 +26,4 @@ class Solution(object):
                 if board[i][j] == 'X':
                     count += 1
                     search(i, j)
-        return count 
+        return count
