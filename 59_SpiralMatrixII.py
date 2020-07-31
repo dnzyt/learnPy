@@ -30,5 +30,3 @@ class Solution:
                 number += 1
             colBegin += 1
         return matrix
-                
-

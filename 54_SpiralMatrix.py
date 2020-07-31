@@ -28,3 +28,25 @@ class Solution:
                 res += temp
             seq = (seq + 1) % 4
         return res
+
+    # recursive solution
+    def spiralOrder2(self, matrix: List[List[int]]) -> List[int]:
+        row = len(matrix)
+        if row == 0 or len(matrix[0]) == 0:
+            return []
+        col = len(matrix[0])
+
+        res = matrix[0]
+        if row > 1:
+            for i in range(1, row):
+                res.append(matrix[i][col - 1])
+            for i in range(col - 2, -1, -1):
+                res.append(matrix[row - 1][i])
+            if col > 1:
+                for i in range(row - 2, 0, -1):
+                    res.append(matrix[i][0])
+        m = []
+        for i in range(1, row - 1):
+            m.append(matrix[i][1:-1])
+
+        return res + self.spiralOrder2(m)
