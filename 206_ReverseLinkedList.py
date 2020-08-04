@@ -14,3 +14,9 @@ class Solution:
             dummy.next = curr
             curr = temp
         return dummy.next
+
+    def reverseList2(self, head):
+        curr, prev = head, None
+        while curr:
+            curr.next, prev, curr = prev, curr, curr.next
+        return prev
