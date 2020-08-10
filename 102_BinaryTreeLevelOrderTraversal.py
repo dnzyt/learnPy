@@ -13,13 +13,30 @@ class Solution:
         queue = [root]
         while queue:
             node = []
-            l = []
+            ls = []
             for i in queue:
-                l.append(i.val)
+                ls.append(i.val)
                 if i.left:
                     node.append(i.left)
                 if i.right:
                     node.append(i.right)
-            res.append(l)
+            res.append(ls)
             queue = node
+        return res
+
+    # DFS
+    def levelOrder2(self, root):
+        res = []
+
+        def helper(root, level):
+            if not root:
+                return
+            if len(res) == level:
+                res.append([])
+            res[level].append(root.val)
+            helper(root.left, level + 1)
+            helper(root.right, level + 1)
+
+        helper(root, 0)
+
         return res
