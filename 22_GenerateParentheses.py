@@ -1,20 +1,17 @@
 class Solution:
     def generateParenthesis(self, n):
-        if n == 0:
-            return []
-        result = []
-        self.helper(n, n, '', result)
-        return result
+        self.res = []
+        self._gen(0, 0, n, '')
+        return self.res
 
-    def helper(self, le, ri, item, result):
-        if le > ri:
+    def _gen(self, left, right, n, current):
+        if left == n and right == n:
+            self.res.append(current)
             return
-        if le == 0 and ri == 0:
-            result.append(item)
-        if le > 0:
-            self.helper(le - 1, ri, item + '(', result)
-        if ri > 0:
-            self.helper(le, ri - 1, item + ')', result)
+        if left < n:
+            self._gen(left + 1, right, n, current + "(")
+        if left > right and right < n:
+            self._gen(left, right + 1, n, current + ')')
 
     def generateParenthesis2(self, n):
         if n == 1:
